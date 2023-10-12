@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 import styles from "./ConversationTranscript.module.css";
@@ -32,14 +32,13 @@ const fallbackTranscripts = [
 ];
 
 const ConversationTranscript = ({ customerInfo, onShowTranscript }) => {
-  const ref = useRef(null);
   let transcripts = customerInfo.callTranscript;
 
   if (!transcripts) {
     transcripts = fallbackTranscripts;
   }
 
-  const { scrollYProgress } = useScroll({ container: ref });
+  const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -48,29 +47,23 @@ const ConversationTranscript = ({ customerInfo, onShowTranscript }) => {
 
   return (
     <>
-      <div className={styles.mainContainer}>
-        <div className={styles.motionContainer}>
-          <motion.div className={styles.motion} style={{ scaleX }} />
-          <div className={styles.closeText} onClick={onShowTranscript}>
-            Close X
-          </div>
+      <div className={styles.conversationContainer}>
+        <motion.div className={styles.motion} style={{ scaleX }} />
+        <div className={styles.closeText} onClick={onShowTranscript}>
+          Close X
         </div>
-        <div className={styles.conversationContainer} ref={ref}>
-          <div className={styles.scriptContainer}>
-            {transcripts.map((transcript) => (
-              <div className={styles.conversationScriptContainer}>
-                <div className={styles.customerText}>
-                  <span className={styles.customerTitle}>Alex:</span>{" "}
-                  {transcript.customerSay || "Hi"}
-                </div>
-                <div className={styles.botText}>
-                  <span className={styles.botTitle}>Bot:</span>
-                  {transcript.botSay}
-                </div>
-              </div>
-            ))}
+        {transcripts.map((transcript) => (
+          <div className={styles.conversationScriptContainer}>
+            <div className={styles.customerText}>
+              <span className={styles.customerTitle}>Alex:</span>{" "}
+              {transcript.customerSay || "Hi"}
+            </div>
+            <div className={styles.botText}>
+              <span className={styles.botTitle}>Bot:</span>
+              {transcript.botSay}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </>
   );

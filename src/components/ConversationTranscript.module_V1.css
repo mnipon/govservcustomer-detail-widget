@@ -5,27 +5,6 @@
   background-color: white; */
 }
 
-.mainContainer {
-  border: 1px solid rgb(228, 228, 228);
-  width: 503px;
-  position: relative;
-  top: -248px;
-  background-color: #ffffff;
-  left: 101px;
-  border-radius: 14px;
-}
-
-.motionContainer {
-  /* display: flex; */
-  position: sticky;
-  min-width: 500px;
-  height: 30px;
-  top: 0px;
-  left: 25px;
-  right: 0;
-  /* margin-bottom: 40px; */
-}
-
 .motion {
   position: relative;
   height: 10px;
@@ -33,19 +12,19 @@
   left: 0;
   right: 0;
   background-color: #b1ffc9;
-  transform-origin: 14px;
+  transform-origin: 0%;
 }
 
 .conversationContainer {
   position: relative;
   background-color: white;
-  /* border: 2px solid rgb(228, 228, 228); */
+  border: 2px solid rgb(228, 228, 228);
   min-width: 500px;
-  height: 220px;
+  height: 250px;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 6px;
-  top: 0px;
+  top: -300px;
   left: 16px;
   z-index: 2;
   width: 75%;
@@ -55,8 +34,8 @@
   font-size: 12px;
   font-family: "Public Sans";
   position: relative;
-  top: 0px;
-  left: 450px;
+  top: 4px;
+  left: 423px;
   margin-bottom: 7px;
 }
 
